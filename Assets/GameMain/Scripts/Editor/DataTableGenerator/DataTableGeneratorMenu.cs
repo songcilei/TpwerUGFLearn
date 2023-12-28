@@ -20,12 +20,13 @@ namespace Flower.Editor.DataTableTools
             foreach (string dataTableName in GetDataTableNames())
             {
                 DataTableProcessor dataTableProcessor = DataTableGenerator.CreateDataTableProcessor(dataTableName);
+                //CheckRawData 这里就是在检查是否有不符合格式的
                 if (!DataTableGenerator.CheckRawData(dataTableProcessor, dataTableName))
                 {
                     Debug.LogError(Utility.Text.Format("Check raw data failure. DataTableName='{0}'", dataTableName));
                     break;
                 }
-
+                //这里是创建二进制文件
                 DataTableGenerator.GenerateDataFile(dataTableProcessor, dataTableName);
             }
 
@@ -44,7 +45,7 @@ namespace Flower.Editor.DataTableTools
                     Debug.LogError(Utility.Text.Format("Check raw data failure. DataTableName='{0}'", dataTableName));
                     break;
                 }
-
+                //这个是生成脚本文件
                 DataTableGenerator.GenerateCodeFile(dataTableProcessor, dataTableName);
             }
 

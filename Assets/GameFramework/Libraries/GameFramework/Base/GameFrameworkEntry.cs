@@ -64,8 +64,9 @@ namespace GameFramework
             {
                 throw new GameFrameworkException(Utility.Text.Format("You must get a Game Framework module, but '{0}' is not.", interfaceType.FullName));
             }
-
+//这里 因为要从接口类生成到 管理器类 所以利用字符串 第一个的裁剪 来确定了管理器类
             string moduleName = Utility.Text.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
+//这个可以根据string 获取对应程序集中的某个Type类型的对象            
             Type moduleType = Type.GetType(moduleName);
             if (moduleType == null)
             {

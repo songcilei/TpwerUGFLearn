@@ -129,7 +129,7 @@ namespace GameFramework.Config
         }
 
         /// <summary>
-        /// 设置资源管理器。
+        /// 设置资源管理器。 通过这里 设置了全局配置相关的加载方案 到DataProvider  然后通过DataProvider内的方法进行读表 
         /// </summary>
         /// <param name="resourceManager">资源管理器。</param>
         public void SetResourceManager(IResourceManager resourceManager)

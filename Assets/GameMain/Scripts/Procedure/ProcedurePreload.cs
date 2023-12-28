@@ -103,6 +103,8 @@ namespace Flower
             // Preload dictionaries
             LoadDictionary("Default");
 
+            
+            //表什么的都在这里加载的哈！！！好几层
             GameEntry.Data.PreLoadAllData();
         }
 
@@ -161,6 +163,7 @@ namespace Flower
 
         private void LoadConfig(string configName)
         {
+//这里是表具体的路径和名字 by:zihao.zhang            
             string configAssetName = AssetUtility.GetConfigAsset(configName, false);
             m_LoadedFlag.Add(configAssetName, false);
             GameEntry.Config.ReadData(configAssetName, this);

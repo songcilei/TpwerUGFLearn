@@ -93,7 +93,7 @@ namespace UnityGameFramework.Runtime
                 Log.Fatal("Event component is invalid.");
                 return;
             }
-
+//设置对应表的对应数据
             if (baseComponent.EditorResourceMode)
             {
                 m_DataTableManager.SetResourceManager(baseComponent.EditorResourceHelper);

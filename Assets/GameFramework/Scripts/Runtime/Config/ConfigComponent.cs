@@ -67,14 +67,15 @@ namespace UnityGameFramework.Runtime
         protected override void Awake()
         {
             base.Awake();
-
+            //IConfigManager里面就一堆接口
+            //这里有点特殊的是 GetModule方法会 当没有这个类的时候 会创建这个类 
             m_ConfigManager = GameFrameworkEntry.GetModule<IConfigManager>();
             if (m_ConfigManager == null)
             {
                 Log.Fatal("Config manager is invalid.");
                 return;
             }
-
+//回调
             m_ConfigManager.ReadDataSuccess += OnReadDataSuccess;
             m_ConfigManager.ReadDataFailure += OnReadDataFailure;
 
@@ -91,20 +92,21 @@ namespace UnityGameFramework.Runtime
 
         private void Start()
         {
+//获取标准组件            
             BaseComponent baseComponent = GameEntry.GetComponent<BaseComponent>();
             if (baseComponent == null)
             {
                 Log.Fatal("Base component is invalid.");
                 return;
             }
-
+//获取事件组件
             m_EventComponent = GameEntry.GetComponent<EventComponent>();
             if (m_EventComponent == null)
             {
                 Log.Fatal("Event component is invalid.");
                 return;
             }
-
+//根据base component上的资源加载模式  进行判断资源初始化方案  既 读表还是 直接加载
             if (baseComponent.EditorResourceMode)
             {
                 m_ConfigManager.SetResourceManager(baseComponent.EditorResourceHelper);
@@ -113,7 +115,7 @@ namespace UnityGameFramework.Runtime
             {
                 m_ConfigManager.SetResourceManager(GameFrameworkEntry.GetModule<IResourceManager>());
             }
-
+//配置帮助器
             ConfigHelperBase configHelper = Helper.CreateHelper(m_ConfigHelperTypeName, m_CustomConfigHelper);
             if (configHelper == null)
             {

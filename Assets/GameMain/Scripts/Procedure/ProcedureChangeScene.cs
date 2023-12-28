@@ -43,8 +43,9 @@ namespace Flower
 
             GameEntry.UI.CloseDownloadForm();
             GameEntry.UI.CloseAllLoadedUIForms();
-
+//加载场景ID
             loadingSceneId = procedureOwner.GetData<VarInt32>(Constant.ProcedureData.NextSceneId).Value;
+//读表 加载场景数据           
             sceneData = GameEntry.Data.GetData<DataScene>().GetSceneData(loadingSceneId);
 
             if (sceneData == null)
